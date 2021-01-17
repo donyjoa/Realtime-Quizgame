@@ -1,1 +1,2 @@
-hello;
+/* eslint-disable no-undef */
+io("/");
