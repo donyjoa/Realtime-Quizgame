@@ -20,10 +20,16 @@ const server = app.listen(PORT, handleListening);
 
 const io = socketIO(server);
 
-let sockets = [];
+// 이 부분은 서버의 메모리라고 생각하면 된다.
 
 io.on("connection", (socket) => {
-  sockets.push(socket.id);
+  socket.on("newMessage", ({ message }) => {
+    socket.broadcast.emit("messageNotif", {
+      message,
+      nickname: socket.nickname || "Bob",
+    });
+  });
+  socket.on("setNickname", ({ nickname }) => {
+    socket.nickname = nickname;
+  });
 });
-
-setInterval(() => console.log(sockets), 1000);
