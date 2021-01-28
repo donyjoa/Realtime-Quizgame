@@ -1,3 +1,11 @@
 import gulp from "gulp";
 
-// #3.0 4:24 까지 봤음
+const paths = {
+  styles: {
+    src: "assets/scss/styles.scss",
+  },
+};
+
+export function styles() {
+  return gulp.src(paths.styles.src).pipe();
+}
