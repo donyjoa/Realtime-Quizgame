@@ -2,6 +2,7 @@ import { join } from "path";
 import express from "express";
 import socketIO from "socket.io";
 import logger from "morgan";
+import socketController from "./socketController";
 
 const PORT = 4000;
 const app = express();
@@ -22,14 +23,4 @@ const io = socketIO(server);
 
 // 이 부분은 서버의 메모리라고 생각하면 된다.
 
-io.on("connection", (socket) => {
-  socket.on("newMessage", ({ message }) => {
-    socket.broadcast.emit("messageNotif", {
-      message,
-      nickname: socket.nickname || "Bob",
-    });
-  });
-  socket.on("setNickname", ({ nickname }) => {
-    socket.nickname = nickname;
-  });
-});
+io.on("connection", (socket) => socketController(socket));
