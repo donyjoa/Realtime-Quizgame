@@ -1,4 +1,4 @@
-const notifications = document.getElementById("jsNotifications");
+const notifications = document.querySelector("body");
 
 const fireNotification = (text, color) => {
   const notification = document.createElement("div");
