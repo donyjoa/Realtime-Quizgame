@@ -25,4 +25,4 @@ const io = socketIO(server);
 
 // 이 부분은 서버의 메모리라고 생각하면 된다.
 
-io.on("connection", (socket) => socketController(socket));
+io.on("connection", (socket) => socketController(socket, io));
