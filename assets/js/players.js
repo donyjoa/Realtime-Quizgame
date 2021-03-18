@@ -1,4 +1,4 @@
-import { disableChat } from "./chat";
+import { disableChat, enableChat } from "./chat";
 import {
   disableCanvas,
   enableCanvas,
@@ -30,6 +30,7 @@ export const handleGameStarted = () => {
   setNotifs("");
   disableCanvas();
   hideCanvasControls();
+  enableChat();
 };
 
 export const handleLeaderNotif = ({ word }) => {
